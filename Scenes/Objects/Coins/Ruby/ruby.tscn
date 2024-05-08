@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://bht8tcwcxca6h"]
+
+[ext_resource type="Texture2D" uid="uid://b4u2wj0jbn4qo" path="res://Resources/RedCoin.png" id="1_gvyd4"]
+[ext_resource type="Script" path="res://Scenes/Objects/Coins/Ruby/ruby.gd" id="2_40hrt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdrm1"]
+atlas = ExtResource("1_gvyd4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smkh1"]
+atlas = ExtResource("1_gvyd4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8evtg"]
+atlas = ExtResource("1_gvyd4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juw8y"]
+atlas = ExtResource("1_gvyd4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxctf"]
+atlas = ExtResource("1_gvyd4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8qpa"]
+atlas = ExtResource("1_gvyd4")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0cop"]
+atlas = ExtResource("1_gvyd4")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2gmg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdrm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smkh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8evtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juw8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxctf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8qpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0cop")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytga5"]
+size = Vector2(10, 10)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_o2gmg")
+autoplay = "default"
+script = ExtResource("2_40hrt")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-307, -555)
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(307, 555)
+shape = SubResource("RectangleShape2D_ytga5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
