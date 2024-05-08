@@ -34,7 +34,6 @@ func _physics_process(delta):
 	var is_running = Input.is_action_pressed("run")
 	
 	if direction:
-		print(direction)
 		velocity.x = direction * (SPEED + (150 if is_running else 0))
 	else:
 		velocity.x = move_toward(velocity.x, 0, 5)
